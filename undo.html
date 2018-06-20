@@ -1,0 +1,68 @@
+<html>
+ <head> 	
+ </head>
+ <body>
+  <div id="content">
+   <span>Todos List</span>
+
+   <ul id="todo-list">
+    
+    <li class="list-item"> Coffee </li>
+    <li class="list-item"> Tea </li>
+    <li class="list-item"> Milk </li>
+
+   </ul>
+    <input id="txt_name" type="text">
+  	<button class="submit">Add it</button><br>
+
+  	<br>
+   <span>Done List</span>
+   
+   <ul id="done-list">
+    
+   </ul>
+  
+  </div>
+ </body>
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script>
+
+$('.list-item').on(
+	'click', function() {
+        let removed = $('#todo-list').remove();
+        removed.insertAfter('#done-list');
+		$('#done-list').append($('<li class="done-list-item"></li>').text(removed.text()));
+	});
+
+
+     $(document).on('click', '.submit', function () {
+        let todo = $('#txt_name').val();
+        $('#done-list').append(`<li class="list-item"> ${todo} </li>`);
+    });
+
+    </script>
+</html>
+
+<!--
+<script>
+
+
+// Remove the element and save it in a variable
+var removed = $('#todo-list').remove();
+
+// Insert the removed element back into the body
+removed.insertAfter('#done-list');
+
+
+</script>-->
+
+
+
+   
+
+
+
+
+

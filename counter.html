@@ -1,0 +1,60 @@
+<html>
+<head></head>
+
+<body>
+
+        <div id="content">
+      
+           <span>Todos</span>
+           <ul id="todo_list">
+              <!-- <li class="list-item"> Coffee </li>
+               <li class="list-item"> Tea </li>
+               <li class="list-item"> Milk </li>-->
+           </ul>
+      
+
+           <label>
+            <input type="text" id="enter_task" placeholder="Add items to list">
+            </label>
+            <input type="submit" id="add" value="Add">
+
+           <p class="count-text">There are <span id="counter">0</span> items in list.</p>
+      
+        </div>
+      
+</body>
+      
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+         crossorigin="anonymous"></script>
+      
+
+<script>
+
+function enter_task() {
+    let text = $('#enter_task').val();
+    $('#todo_list').append('<li>' + text + '<input type="submit" class="done delete" value="Delete">' + '</li>');
+    $("#counter").text($("#todo_list").children().length);
+    $("#enter_task").val('').keyup(); // Clearing the input field after entry
+};
+</script>
+
+<script>
+$(function() {
+    $('#todo_list').on('click', '.delete', function() {
+        $(this).parent().remove();
+        $("#counter").text($("#todo_list").children().length);
+    });
+    $('#add').click(function() {
+        $("#counter").text($("#todo_list").children().length);
+    });
+	$("#enter_task").keyup(function(){
+    	console.log($(this).val())
+    	$("#add").prop("disabled", $(this).val()==="")
+    }).keyup()
+
+    $('#add').on('click', enter_task);
+});
+
+</script>
+</html>

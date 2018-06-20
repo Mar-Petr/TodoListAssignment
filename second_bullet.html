@@ -1,0 +1,49 @@
+<html>
+<head>
+</head>
+<body>
+
+  <div id="content">
+
+     <span>Todos</span>
+     <ul id="todo-list">
+         <li class="list-item"> Coffee </li>
+         <li class="list-item"> Tea </li>
+         <li class="list-item"> Milk </li>
+     </ul>
+
+     <span>Done</span>
+     <ul id="done-list"></ul>
+     <input type="text" class="new-todo">
+     <button type="button" class="add-new-todo">Add todo</button>
+     <p><span class="h hidden",  style="color:red">Please Enter a Valid Word</span></p>
+
+
+  </div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+   crossorigin="anonymous"></script>
+
+
+   <script type="text/javascript">
+    $(document).ready(function(){
+        let $word=/^([a-zA-Z]{3,16})$/;
+        $('.new-todo').on('keypress keydown keyup',function(){
+                 if (!$(this).val().match($word)) {
+                  // there is a mismatch, hence show the error message
+                     $('.h').removeClass('hidden');
+                     $('.h').show();
+                 }
+               else{
+                    // else, do not display message
+                    $('.h').addClass('hidden');
+                    
+                   }
+             });
+    });
+    </script>
+
+   </html>

@@ -1,0 +1,69 @@
+
+<html>
+ <head> 	
+ </head>
+ <body>
+  <div id="content">
+   <span>Todos List</span>
+
+   <ul id="todo-list">
+    
+    
+    <li class="list-item"> Coffee </li>
+    <li class="list-item"> Tea </li>
+    <li class="list-item"> Milk </li>
+
+   </ul>
+    <input id="txt_name" type="text">
+  	<button class="submit">Add it</button><br>
+
+  	<br>
+   <span>Done List</span>
+   
+   <ul id="done-list">
+    
+   </ul>
+  
+  </div>
+ </body>
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+<script>
+let counter = 0;
+let countDone = 0;
+//Add a new item to ToDo list. Check first if it is already in the list
+$(document).ready(function () {
+	$(document).on('click', '.submit', function () {
+		let todo = $('#txt_name').val();
+		let itemFound = false;
+		
+
+		if ($("#todo-list li:contains(" + todo + ")").length) {
+			itemFound = true;
+		}
+
+		if (itemFound == true) {
+
+			var alertMessage = {
+				show: function(content) {
+					$('.alert').html(content);
+					setTimeout(function(){
+						$('.alert').html('');
+					});
+				}
+			};
+			alertMessage.show('<div>This item already exists in list!</div>');
+		}
+		else {
+			console.log('This item does not exist');
+			counter++;
+			$('#todo-list').append(`<li class="list-item"> ${todo} </li>`);
+			$('#count').replaceWith(`<span id="count">ToDos left: ${counter}</span>`);
+		}
+	});
+})
+
+</script>
+</html>
